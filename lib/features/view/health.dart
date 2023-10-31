@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:health_poc/features/bloc/rive_bloc.dart';
 import 'package:pedometer/pedometer.dart';
+import 'package:rive/rive.dart';
 
 class HealthPage extends StatefulWidget {
   const HealthPage({super.key});
@@ -70,7 +71,10 @@ class _HealthPageState extends State<HealthPage> {
       ),
       body: Center(
         child: _status == 'walking'
-            ? const Text('Walking')
+            ? const RiveAnimation.network(
+                "https://public.rive.app/community/runtime-files/6413-12421-lil-guy.riv",
+                stateMachines: ['idle', 'walk'],
+              )
             : const Text('Not Walking'),
       ),
     );
